@@ -5,8 +5,8 @@ return array(
         'Application',
         'DoctrineModule',
         'DoctrineORMModule',
-        //'DoctrineDataFixtureModule',
-        'SONBase',
+        'DoctrineDataFixtureModule',
+        //'SONBase',
         'SONUser',
     ),
 
