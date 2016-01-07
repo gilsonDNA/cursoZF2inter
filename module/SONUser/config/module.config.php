@@ -17,6 +17,16 @@ return array(
                     ),
                 ),
             ),
+            'sonuser-activate' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route'    => '/register/activate[/:key]',
+                    'defaults' => array(
+                        'controller' => 'SONUser\Controller\Index',
+                        'action'     => 'activate'
+                    ),
+                ),
+            ),
        ),
     ),
     
@@ -55,7 +65,7 @@ return array(
                ),
            ),
        ),
-        'data-fixture' => array(
+        'fixture' => array(
             'SONUser_fixture' => __DIR__ . '/../src/SONUser/Fixture',
         )
     ),
