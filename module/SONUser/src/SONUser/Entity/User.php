@@ -195,5 +195,11 @@ class User
 
     
     
+    public function toArray(){
+        
+        return (new Hydrator\ClassMethods())->extract($this);
+    }
+    
+    
 }
 

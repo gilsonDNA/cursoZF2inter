@@ -1,0 +1,103 @@
+<?php
+namespace SONAcl\Entity;
+
+/**
+ * Description of Role
+ *
+ * @author gilson
+ */
+
+use Doctrine\ORM\Mapping as ORM;
+use Zend\Stdlib\Hydrator;
+
+/**
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="sonacl_resources")
+ * @ORM\Entity(repositoryClass="SONAcls\Entity\ResourceRepository")
+ */
+class Resource {
+    
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
+    protected $id;
+    
+    /**
+     * @ORM\Column(type="text")
+     * @var string
+     */
+    protected $nome;
+    
+    /**
+     * @ORM\Column(type="datetime", name="created_at")
+     */
+    protected $createdAt;
+     /**
+     * @ORM\Column(type="datetime", name="update_at")
+     */
+    protected $updatedAt;
+    
+    
+    public function __construct($opyions = array()) {
+        (new Hydrator\ClassMethods)->hydrate($options, $this);
+        $this->createdAt = new \DateTime("now");
+        $this->updatedAt = new \DateTime("now");
+    }
+    
+    public function toArray(){
+        (new Hydrator\ClassMethods)->extract($this); 
+    }
+    
+    function getId() {
+        return $this->id;
+    }
+
+    
+
+    function getNome() {
+        return $this->nome;
+    }
+
+    
+
+    function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    
+
+    function setNome($nome) {
+        $this->nome = $nome;
+        return $this;
+    }
+
+    
+
+    function setCreatedAt() {
+        $this->createdAt = new \Datetime("now");
+        return $this;
+    }
+
+    /**
+     * 
+     * @ORM\PrePersist
+     */
+    function setUpdatedAt() {
+        $this->updatedAt = new \Datetime("now");
+        return $this;
+    }
+
+
+}

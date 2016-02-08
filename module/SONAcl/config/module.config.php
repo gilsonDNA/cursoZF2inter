@@ -1,60 +1,17 @@
 <?php
 
-namespace SONUser;
+namespace SONAcl;
 
 return array(
     'router' => array(
         'routes' => array(
-            'sonuser-register' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/register',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'SONUser\Controller',
-                        'controller' => 'Index',
-                        'action' => 'register',
-                    )
-                )
-            ),
-            'sonuser-activate' => array(
-                'type' => 'Segment',
-                'options' => array(
-                    'route' => '/register/activate[/:key]',
-                    'defaults' => array(
-                        'controller' => 'SONUser\Controller\Index',
-                        'action' => 'activate'
-                    )
-                )
-            ),
-             'sonuser-auth' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/auth',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'SONUser\Controller',
-                        'controller' => 'Auth',
-                        'action' => 'index',
-                    )
-                )
-            ),
-             'sonuser-logout' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route' => '/auth/logout',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'SONUser\Controller',
-                        'controller' => 'Auth',
-                        'action' => 'logout',
-                    )
-                )
-            ),
-            'sonuser-admin' => array(
+            'sonacl-admin' => array(
                 'type' => 'Literal',
                 'options' => array(
                     'route' => '/admin',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'SONUser\Controller',
-                        'controller' => 'Users',
+                        '__NAMESPACE__' => 'SONAcl\Controller',
+                        'controller' => 'Roles',
                         'action' => 'index'
                     )
                 ),
@@ -70,8 +27,8 @@ return array(
                                 'id' => '\d+'
                             ),
                             'defaults' => array(
-                                '__NAMESPACE__' => 'SONUser\Controller',
-                                'controller' => 'users'
+                                '__NAMESPACE__' => 'SONAcl\Controller',
+                                'controller' => 'roles'
                             )
                         )
                     ),
@@ -85,8 +42,8 @@ return array(
                                 'page' => '\d+'
                             ),
                             'defaults' => array(
-                                '__NAMESPACE__' => 'SONUser\Controller',
-                                'controller' => 'users'
+                                '__NAMESPACE__' => 'SONAcl\Controller',
+                                'controller' => 'roles'
                             )
                         )
                     )
@@ -96,9 +53,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'SONUser\Controller\Index' => 'SONUser\Controller\IndexController',
-            'SONUser\Controller\Users' => 'SONUser\Controller\UsersController',
-            'SONUser\Controller\Auth' => 'SONUser\Controller\AuthController',
+            'SONAcl\Controller\Roles' => 'SONAcl\Controller\RolesController',
         ),
     ),
     'view_manager' => array(
@@ -130,7 +85,7 @@ return array(
             ),
         ),
         'fixture' => array(
-            'SONUser_fixture' => __DIR__ . '/../src/SONUser/Fixture',
+            'SONAcl_fixture' => __DIR__ . '/../src/SONAcl/Fixture',
         )
     ),
 );

@@ -13,12 +13,12 @@
 
 return array(
     'mail' => array(
-        'name' => 'smtp.googlemail.com',
-        'host' => 'smtp.googlemail.com',
+        'name' => 'smtp.gmail.com',
+        'host' => 'smtp.gmail.com',
         'connection_class' => 'login',
         'connection_config' => array(
             'username' => 'gilson.anselmo@gmail.com',
-            'password' => '123435',
+            'password' => '1234',
             'ssl' => 'tls',
             'port' => 465,
             'from' => 'gilson.anselmo@gmail.com'

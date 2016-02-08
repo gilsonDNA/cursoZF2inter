@@ -1,6 +1,6 @@
 <?php
 
-namespace SONUser\Controller;
+namespace SONBase\Controller;
 
 /**
  * Description of CrudController
