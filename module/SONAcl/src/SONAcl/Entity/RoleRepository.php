@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class RoleRepository extends EntityRepository{
     //put your code here
     
-    public function fatchParent(){
+    public function fetchParent(){
         $entity = $this->findAll();
         $array = array();
         

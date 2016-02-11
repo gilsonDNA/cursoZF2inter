@@ -9,6 +9,7 @@ return array(
         'SONBase',
         'SONUser',
         'SONAcl',
+        'SONUserRest',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

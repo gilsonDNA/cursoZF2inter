@@ -132,5 +132,7 @@ class Role {
     public function __toString() {
         return $this->nome;
     }
+    
+    
 
 }

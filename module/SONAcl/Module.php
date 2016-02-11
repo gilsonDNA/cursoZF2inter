@@ -41,9 +41,48 @@ class Module
                     
                     return new Form\Role('role', $parent);
                 },
+                'SONAcl\Form\Privilege' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    $repoRoles = $em->getRepository('SONAcl\Entity\Role');
+                    $roles = $repoRoles->fetchParent();
+                    
+                    $repoResources = $em->getRepository('SONAcl\Entity\Resource');
+                    $resources = $repoResources->fetchPairs();
+                    
+                    
+
+                    return new Form\Privilege('privilege', $roles,$resources );
+                },
+                'SONAcl\Form\Resource' => function($sm){
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+                    return new Form\Resource($em);
+                },
+                        
+                        
+                       
                 
                 'SONAcl\Service\Role' => function($sm){
-                    return new Service\Rersource($sm->get('Doctrine\ORM\EntityManager'));
+                    return new Service\Role($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'SONAcl\Service\Resource' => function($sm){
+                    return new Service\Resource($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'SONAcl\Service\Privilege' => function($sm) {
+                    return new Service\Privilege($sm->get('Doctrine\ORM\EntityManager'));
+                },
+                'SONAcl\Permissions\Acl' => function($sm) {
+                    $em = $sm->get('Doctrine\ORM\EntityManager');
+
+                    $repoRole = $em->getRepository("SONAcl\Entity\Role");
+                    $roles = $repoRole->findAll();
+
+                    $repoResource = $em->getRepository("SONAcl\Entity\Resource");
+                    $resources = $repoResource->findAll();
+
+                    $repoPrivilege = $em->getRepository("SONAcl\Entity\Privilege");
+                    $privileges = $repoPrivilege->findAll();
+
+                    return new Permissions\Acl($roles, $resources, $privileges);
                 }
             )
         );

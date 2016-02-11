@@ -14,7 +14,7 @@ use Zend\Stdlib\Hydrator;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="sonacl_resources")
- * @ORM\Entity(repositoryClass="SONAcls\Entity\ResourceRepository")
+ * @ORM\Entity(repositoryClass="SONAcl\Entity\ResourceRepository")
  */
 class Resource {
     
@@ -35,20 +35,21 @@ class Resource {
      * @ORM\Column(type="datetime", name="created_at")
      */
     protected $createdAt;
-     /**
-     * @ORM\Column(type="datetime", name="update_at")
+    
+    /**
+     * @ORM\Column(type="datetime", name="updated_at")
      */
     protected $updatedAt;
     
     
-    public function __construct($opyions = array()) {
+    public function __construct($options = array()) {
         (new Hydrator\ClassMethods)->hydrate($options, $this);
         $this->createdAt = new \DateTime("now");
         $this->updatedAt = new \DateTime("now");
     }
     
     public function toArray(){
-        (new Hydrator\ClassMethods)->extract($this); 
+        return (new Hydrator\ClassMethods)->extract($this); 
     }
     
     function getId() {
@@ -71,6 +72,7 @@ class Resource {
         return $this->updatedAt;
     }
 
+    
     function setId($id) {
         $this->id = $id;
         return $this;

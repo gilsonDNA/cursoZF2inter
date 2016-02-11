@@ -14,7 +14,7 @@ use Zend\Stdlib\Hydrator;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="sonacl_privileges")
- * @ORM\Entity(repositoryClass="SONAcls\Entity\PrivilegeRepository")
+ * @ORM\Entity(repositoryClass="SONAcl\Entity\PrivilegeRepository")
  */
 class Privilege {
     
@@ -54,7 +54,7 @@ class Privilege {
     protected $updatedAt;
     
     
-    public function __construct($opyions = array()) {
+    public function __construct($options = array()) {
         (new Hydrator\ClassMethods)->hydrate($options, $this);
         $this->createdAt = new \DateTime("now");
         $this->updatedAt = new \DateTime("now");

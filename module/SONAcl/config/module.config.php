@@ -8,7 +8,7 @@ return array(
             'sonacl-admin' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/admin',
+                    'route' => '/admin/acl',
                     'defaults' => array(
                         '__NAMESPACE__' => 'SONAcl\Controller',
                         'controller' => 'Roles',
@@ -54,6 +54,8 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'SONAcl\Controller\Roles' => 'SONAcl\Controller\RolesController',
+            'SONAcl\Controller\Resources' => 'SONAcl\Controller\ResourcesController',
+            'SONAcl\Controller\Privileges' => 'SONAcl\Controller\PrivilegesController',
         ),
     ),
     'view_manager' => array(

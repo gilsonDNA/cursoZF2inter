@@ -41,7 +41,7 @@ class Role extends Form {
         $this->add(array(
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
-            'attribute' => array(
+            'attributes' => array(
                 'value' => 'Salvar',
                 'class' => 'btn-success'
             )

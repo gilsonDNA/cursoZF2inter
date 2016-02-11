@@ -9,9 +9,10 @@ namespace SONAcl\Fixture;
  */
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use SONAcl\Entity\Role;
 
-class LoadRole extends AbstractFixture{
+class LoadRole extends AbstractFixture implements OrderedFixtureInterface {
     
     public function load(ObjectManager $manager) {
         $role = new Role();
@@ -38,6 +39,10 @@ class LoadRole extends AbstractFixture{
         $manager->persist($role);
         
         $manager->flush();
+    }
+
+    public function getOrder() {
+        return 1;
     }
 
 //put your code here

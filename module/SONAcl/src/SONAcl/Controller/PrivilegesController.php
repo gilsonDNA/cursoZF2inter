@@ -11,13 +11,13 @@ use SONBase\Controller\CrudController;
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel;
 
-class RolesController extends  CrudController{
+class PrivilegesController extends  CrudController{
     //put your code here
     public function __construct() {
-        $this->entity = 'SONAcl\Entity\Role';
-        $this->service = "SONAcl\Service\Role";
-        $this->form = "SONAcl\Form\Role";
-        $this->controller = "roles";
+        $this->entity = 'SONAcl\Entity\Privilege';
+        $this->service = "SONAcl\Service\Privilege";
+        $this->form = "SONAcl\Form\Privilege";
+        $this->controller = "privileges";
         $this->route = "sonacl-admin/default";
         
     }
@@ -71,14 +71,6 @@ class RolesController extends  CrudController{
             
         }
         return new ViewModel(array('form' => $form));
-    }
-    
-    public function testeAction()
-    {
-        $acl = $this->getServiceLocator()->get("SONAcl\Permissions\Acl");
-        
-        echo $acl->isAllowed("Redator","Posts","Visualizar")? "Permitido" : "Negado";
-        die;
     }
     
 }
